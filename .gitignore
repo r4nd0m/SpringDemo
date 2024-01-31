@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### persisting docker mariaDB data ###
+/data/

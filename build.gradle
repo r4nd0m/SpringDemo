@@ -24,3 +24,18 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register('createMariaDB', Exec) {
+	workingDir 'scripts'
+	commandLine 'cmd', '/c', 'create_mariadb.bat'
+}
+
+tasks.register('startMariaDB', Exec) {
+	workingDir 'scripts'
+	commandLine 'cmd', '/c', 'start_mariadb.bat'
+}
+
+tasks.register('stopMariaDB', Exec) {
+	workingDir 'scripts'
+	commandLine 'cmd', '/c', 'stop_mariadb.bat'
+}
