@@ -12,13 +12,14 @@ public class Car {
     @Column(length = 1000)
     private String owner;
 
+    public Car() {};
+
     public Car(String name, String owner) {
         super();
         this.name = name;
         this.owner = owner;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
