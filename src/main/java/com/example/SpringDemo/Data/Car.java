@@ -1,26 +1,28 @@
 package com.example.SpringDemo.Data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
+
+import java.util.StringJoiner;
 
 @Entity
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String owner;
+    @Column(length = 1000)
     private String name;
+    @Column(length = 1000)
+    private String owner;
 
     public Car() {
 
     }
 
-    public Car(String owner, String name) {
+    public Car(String name, String owner) {
         super();
-        this.owner = owner;
         this.name = name;
+        this.owner = owner;
     }
 
     public Long getId() {
@@ -43,5 +45,8 @@ public class Car {
         this.name = name;
     }
 
+    public String toString() {
+        return "Car{ name: " + this.name + ", owner: " + this.owner + " }";
+    }
 
 }
