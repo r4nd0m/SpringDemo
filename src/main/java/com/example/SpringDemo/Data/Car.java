@@ -1,9 +1,6 @@
 package com.example.SpringDemo.Data;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
-
-import java.util.StringJoiner;
 
 @Entity
 public class Car {
@@ -15,16 +12,13 @@ public class Car {
     @Column(length = 1000)
     private String owner;
 
-    public Car() {
-
-    }
-
     public Car(String name, String owner) {
         super();
         this.name = name;
         this.owner = owner;
     }
 
+    @Id
     public Long getId() {
         return id;
     }
@@ -46,7 +40,7 @@ public class Car {
     }
 
     public String toString() {
-        return "Car{ name: " + this.name + ", owner: " + this.owner + " }";
+        return "Car{ id: " + getId() + ", + name: " + getName() + ", owner: " + getOwner() + " }";
     }
 
 }
