@@ -1,5 +1,6 @@
 package com.example.SpringDemo.Data;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,12 +10,19 @@ public class Car {
     private Long id;
     @Column(length = 1000)
     private String name;
-    @Column(length = 1000)
-    private String owner;
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="owner")
+    @Nullable
+    private CarOwner owner;
 
     public Car() {};
 
-    public Car(String name, String owner) {
+    public Car(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Car(String name, CarOwner owner) {
         super();
         this.name = name;
         this.owner = owner;
@@ -24,11 +32,11 @@ public class Car {
         return id;
     }
 
-    public String getOwner() {
+    public CarOwner getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
+    public void setOwner(CarOwner owner) {
         this.owner = owner;
     }
 

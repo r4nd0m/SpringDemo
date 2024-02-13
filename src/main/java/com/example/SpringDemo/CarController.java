@@ -27,20 +27,20 @@ public class CarController {
         return this.carRepository.findByName(name, Limit.of(Integer.parseInt(limit)));
     }
 
-    @GetMapping("/findByOwner")
-    public List<Car> findByOwner(
-        @RequestParam(value = "owner", defaultValue = "") String owner,
-        @RequestParam(value = "limit", defaultValue = defaultLimit) String limit
-    ) {
-        return this.carRepository.findByOwner(owner, Limit.of(Integer.parseInt(limit)));
-    }
+//    @GetMapping("/findByOwner")
+//    public List<Car> findByOwner(
+//        @RequestParam(value = "owner", defaultValue = "") String owner,
+//        @RequestParam(value = "limit", defaultValue = defaultLimit) String limit
+//    ) {
+//        return this.carRepository.findByOwner(owner, Limit.of(Integer.parseInt(limit)));
+//    }
 
-    @GetMapping("/findByNameAndOwner")
-    public List<Car> findByNameAndOwner(
-        @RequestParam(value = "name", defaultValue = "") String name,
-        @RequestParam(value = "owner", defaultValue = "") String owner,
-        @RequestParam(value = "limit", defaultValue = defaultLimit) String limit
-    ) {
-        return this.carRepository.findByNameAndOwner(name, owner, Limit.of(Integer.parseInt(limit)));
-    }
+//    @GetMapping("/findByNameAndOwner")
+//    public List<Car> findByNameAndOwner(
+//        @RequestParam(value = "name", defaultValue = "") String name,
+//        @RequestParam(value = "owner", defaultValue = "") String owner,
+//        @RequestParam(value = "limit", defaultValue = defaultLimit) String limit
+//    ) {
+//        return this.carRepository.findByNameAndOwner(name, owner, Limit.of(Integer.parseInt(limit)));
+//    }
 }

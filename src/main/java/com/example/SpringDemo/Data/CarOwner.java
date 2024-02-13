@@ -1,0 +1,49 @@
+package com.example.SpringDemo.Data;
+
+import jakarta.persistence.*;
+
+import java.util.List;
+
+@Entity
+public class CarOwner {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(length = 1000)
+    private String name;
+
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
+    private List<Car> cars;
+
+    public CarOwner() {};
+
+    public CarOwner(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public String toString() {
+        return "CarOwner{ id: " + getId() + ", + name: " + getName() + ", cars: "+getCars().toString()+" }";
+    }
+
+}
