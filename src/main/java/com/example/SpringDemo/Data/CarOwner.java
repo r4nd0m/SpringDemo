@@ -2,8 +2,6 @@ package com.example.SpringDemo.Data;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 public class CarOwner {
     @Id
