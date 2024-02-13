@@ -18,13 +18,14 @@ public interface CarRepository extends CrudRepository<Car, Long> {
         new Car("BMW")
     );
 
+    @Query("SELECT c FROM Car c ORDER BY c.name ASC")
+    List<Car> findAllLimited(Limit limit);
+
     @Query("SELECT c FROM Car c WHERE c.name LIKE %:name% ORDER BY c.name ASC")
     List<Car> findByName(@Param("name") String name, Limit limit);
 
-//    @Query("SELECT c FROM Car c WHERE c.owner LIKE %:owner% ORDER BY c.owner ASC")
-//    List<Car> findByOwner(@Param("owner") String owner, Limit limit);
-//    @Query("SELECT c FROM Car c WHERE c.name LIKE %:name% AND c.owner LIKE %:owner% ORDER BY c.name ASC, c.owner ASC")
-//    List<Car> findByNameAndOwner(@Param("name") String name, @Param("owner") String owner, Limit limit);
+    @Query("SELECT c FROM Car c JOIN FETCH c.owner co WHERE co.name LIKE %:owner%")
+    List<Car> findByOwner(@Param("owner") String owner, Limit limit);
 
     default void initializeWithDummyData(List<CarOwner> owners) {
         if(count() == 0) {

@@ -12,10 +12,7 @@ public class CarOwner {
     @Column(length = 1000)
     private String name;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
-    private List<Car> cars;
-
-    public CarOwner() {};
+    public CarOwner() {}
 
     public CarOwner(String name) {
         super();
@@ -34,16 +31,8 @@ public class CarOwner {
         this.name = name;
     }
 
-    public List<Car> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
     public String toString() {
-        return "CarOwner{ id: " + getId() + ", + name: " + getName() + ", cars: "+getCars().toString()+" }";
+        return "CarOwner{ id: " + getId() + ", + name: " + getName() +" }";
     }
 
 }
