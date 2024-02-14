@@ -1,8 +1,13 @@
 package com.example.SpringDemo.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CarOwner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -10,7 +15,11 @@ public class CarOwner {
     @Column(length = 1000)
     private String name;
 
-    public CarOwner() {}
+    @JsonIgnore
+    @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
+    private List<Car> cars;
+
+    public CarOwner() {};
 
     public CarOwner(String name) {
         super();
@@ -29,8 +38,16 @@ public class CarOwner {
         this.name = name;
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
     public String toString() {
-        return "CarOwner{ id: " + getId() + ", + name: " + getName() +" }";
+        return "CarOwner{ id: " + getId() + ", + name: " + getName() + ", cars: "+getCars().toString()+" }";
     }
 
 }

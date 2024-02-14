@@ -10,7 +10,7 @@ public class Car {
     private Long id;
     @Column(length = 1000)
     private String name;
-    @ManyToOne(fetch=FetchType.EAGER)
+    @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="owner")
     @Nullable
     private CarOwner owner;
