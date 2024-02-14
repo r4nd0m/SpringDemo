@@ -1,4 +1,4 @@
-package com.example.SpringDemo.Data;
+package com.example.SpringDemo.data;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;

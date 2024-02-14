@@ -1,4 +1,4 @@
-package com.example.SpringDemo.Data;
+package com.example.SpringDemo.data;
 
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.Query;

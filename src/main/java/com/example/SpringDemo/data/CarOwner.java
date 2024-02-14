@@ -1,4 +1,4 @@
-package com.example.SpringDemo.Data;
+package com.example.SpringDemo.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
