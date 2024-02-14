@@ -19,7 +19,7 @@ public class CarOwner {
     @OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
     private List<Car> cars;
 
-    public CarOwner() {};
+    public CarOwner() {}
 
     public CarOwner(String name) {
         super();
