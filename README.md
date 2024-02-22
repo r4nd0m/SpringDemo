@@ -15,3 +15,4 @@
 - custom endpoints:
   - http://localhost:8080/api/cars/findByName/{name}/{limit} - find car by name. Both parameters are optional.
   - http://localhost:8080/api/cars/findByOwner/{owner}/{limit} - find car by owner name. Both parameters are optional.
+- API documentation URL http://localhost:8080/swagger-ui/index.html
