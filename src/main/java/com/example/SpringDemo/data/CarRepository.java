@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import java.util.List;
 import java.util.Random;
@@ -24,12 +25,15 @@ public interface CarRepository extends CrudRepository<Car, Long> {
     );
 
     @Query("SELECT c FROM Car c ORDER BY c.name ASC")
+    @RestResource(exported=false)
     List<Car> findAllLimited(Limit limit);
 
     @Query("SELECT c FROM Car c WHERE c.name LIKE %:name% ORDER BY c.name ASC")
+    @RestResource(exported=false)
     List<Car> findByName(@Param("name") String name, Limit limit);
 
     @Query("SELECT c FROM Car c JOIN FETCH c.owner co WHERE co.name LIKE %:owner%")
+    @RestResource(exported=false)
     List<Car> findByOwner(@Param("owner") String owner, Limit limit);
 
     default void initializeWithDummyData(List<CarOwner> owners) {
