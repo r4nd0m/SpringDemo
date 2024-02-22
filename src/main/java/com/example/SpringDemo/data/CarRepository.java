@@ -17,7 +17,10 @@ public interface CarRepository extends CrudRepository<Car, Long> {
         new Car("Ford"),
         new Car("KIA"),
         new Car("Toyota"),
-        new Car("BMW")
+        new Car("BMW"),
+        new Car("Volkswagen"),
+        new Car("Mazda"),
+        new Car("Audi")
     );
 
     @Query("SELECT c FROM Car c ORDER BY c.name ASC")
