@@ -14,15 +14,18 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
     private final ApiUserDetailsServiceImpl apiUserDetailsService;
+    private final AuthenticationFilter authenticationFilter;
 
-    public SecurityConfig(ApiUserDetailsServiceImpl apiUserDetailsService) {
+    public SecurityConfig(ApiUserDetailsServiceImpl apiUserDetailsService, AuthenticationFilter authenticationFilter) {
         this.apiUserDetailsService = apiUserDetailsService;
+        this.authenticationFilter = authenticationFilter;
     }
 
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -43,7 +46,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable).sessionManagement((sessionManagement) -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests((authorizeHttpRequests) -> authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/login").permitAll().anyRequest().authenticated());
+                .authorizeHttpRequests(
+                    (authorizeHttpRequests) -> authorizeHttpRequests.requestMatchers(HttpMethod.POST, "/login")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
+                ).addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
