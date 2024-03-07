@@ -38,3 +38,25 @@ await fetch("http://localhost:8080/api/cars/15", {
     "method": "GET",
     "mode": "cors"
 });
+
+// change car's owner by providing a link to the new owner (see "body" and "Content-type")
+await fetch("http://localhost:8080/api/cars/15/owner", {
+    "credentials": "include",
+    "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "no-cors",
+        "Sec-Fetch-Site": "same-origin",
+        "Authorization": "BearereyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzA5ODk3OTAyfQ.MqzeRK_Ddw6kbG_sLhSUu2K1DapHOlrULDSur2S_F88",
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+        "Content-type": "text/uri-list"
+    },
+    "referrer": "http://localhost:8080/login",
+    "body": "http://localhost:8080/api/carOwners/3",
+    "method": "PUT",
+    "mode": "cors"
+});
