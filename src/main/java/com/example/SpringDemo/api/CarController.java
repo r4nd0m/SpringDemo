@@ -2,6 +2,7 @@ package com.example.SpringDemo.api;
 
 import com.example.SpringDemo.data.Car;
 import com.example.SpringDemo.data.CarRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Limit;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cars")
+@SecurityRequirement(name = "Bearer Authentication")
 public class CarController {
 
     private final CarRepository carRepository;

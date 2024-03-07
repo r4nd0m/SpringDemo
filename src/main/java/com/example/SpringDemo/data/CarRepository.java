@@ -1,5 +1,6 @@
 package com.example.SpringDemo.data;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.data.domain.Limit;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,6 +13,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 @RepositoryRestResource(path = "cars")
+@SecurityRequirement(name = "Bearer Authentication")
 public interface CarRepository extends CrudRepository<Car, Long> {
 
     List<Car> dummyData = List.of(

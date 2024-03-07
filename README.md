@@ -11,8 +11,9 @@
 - after application stop also stop DB container with `/scripts/stop_mariadb.bat`
 
 ## API
-- default SpringBoot Data REST API http://localhost:8080/api/
-- custom endpoints:
+- default SpringBoot Data REST API http://localhost:8080/api/ (JWT protected)
+- some custom endpoints:
   - http://localhost:8080/api/cars/findByName/{name}/{limit} - find car by name. Both parameters are optional.
   - http://localhost:8080/api/cars/findByOwner/{owner}/{limit} - find car by owner name. Both parameters are optional.
 - API documentation URL http://localhost:8080/swagger-ui/index.html
+  - make sure to run ``/login`` first and use returned JWT to authenticate the following requests
