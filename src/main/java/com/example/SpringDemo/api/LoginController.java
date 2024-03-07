@@ -30,7 +30,7 @@ public class LoginController {
         String jwt = jwtService.getToken(auth.getName());
 
         return ResponseEntity.ok()
-                .header(HttpHeaders.AUTHORIZATION, JwtService.PREFIX + " " + jwt)
+                .header(HttpHeaders.AUTHORIZATION, JwtService.PREFIX + jwt)
                 .header(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, HttpHeaders.AUTHORIZATION)
                 .build();
     }
