@@ -31,7 +31,7 @@ await fetch("http://localhost:8080/api/cars/15", {
         "Sec-Fetch-Mode": "no-cors",
         "Sec-Fetch-Site": "same-origin",
         "Sec-Fetch-User": "?1",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzA5NDg3MzQzfQ.7-fPmHuowf9lB4koA--K_ZJeyrVOSRbT0g3EB9sMpd0",
+        "Authorization": "Bearer XXX",
         "Pragma": "no-cache",
         "Cache-Control": "no-cache"
     },
@@ -50,7 +50,7 @@ await fetch("http://localhost:8080/api/cars/15/owner", {
         "Sec-Fetch-Dest": "empty",
         "Sec-Fetch-Mode": "no-cors",
         "Sec-Fetch-Site": "same-origin",
-        "Authorization": "BearereyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzA5ODk3OTAyfQ.MqzeRK_Ddw6kbG_sLhSUu2K1DapHOlrULDSur2S_F88",
+        "Authorization": "Bearer XXX",
         "Pragma": "no-cache",
         "Cache-Control": "no-cache",
         "Content-type": "text/uri-list"
