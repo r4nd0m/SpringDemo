@@ -1,0 +1,1 @@
+docker exec -i mariadb_lts mysql -uroot -e "create database spring_demo;"

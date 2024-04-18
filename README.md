@@ -5,10 +5,11 @@
 - Java 17+
 
 ## Run dev environment
-- create DB container with `/scripts/create_mariadb.bat`
-- run DB container with `/scripts/start_mariadb.bat`
-- build and run the application with environment variable `spring.profiles.active=dev`
-- after application stop also stop DB container with `/scripts/stop_mariadb.bat`
+- create DB container by running `./scripts/create_mariadb.bat` from the project root directory
+- create empty DB by running `./scripts/create_database.bat` from the project root directory
+- run DB container by running `./scripts/start_mariadb.bat`  from the project root directory
+- build and run the application with environment variable `spring.profiles.active=dev` (must be set in Run/Debug Configuration)
+- after application stop also stop DB container with `./scripts/stop_mariadb.bat`
 
 ## API
 - default SpringBoot Data REST API http://localhost:8080/api/ (JWT protected)
