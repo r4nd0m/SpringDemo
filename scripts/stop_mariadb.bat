@@ -1,1 +1,1 @@
-docker stop mariadb_lts
+docker stop mariadb-lts

@@ -7,7 +7,7 @@ docker buildx b -f Dockerfile --build-arg JAR_FILE=build/libs/SpringDemo-0.0.1-S
 docker network create local-docker-network
 
 # attach MariaDB container to the network
-docker network connect local-docker-network mariadb_lts
+docker network connect local-docker-network mariadb-lts
 
 # remove previously created container if present
 docker rm springboot-demo

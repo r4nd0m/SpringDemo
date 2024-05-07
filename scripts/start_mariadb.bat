@@ -1,1 +1,1 @@
-docker start mariadb_lts --attach
+docker start mariadb-lts --attach
