@@ -1,0 +1,102 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-lts
+  labels:
+    app: spring-demo
+spec:
+  ports:
+    - port: 3306
+  selector:
+    app: spring-demo
+    tier: mariadb
+  clusterIP: None
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  labels:
+    app: spring-demo
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-lts
+  labels:
+    app: spring-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-demo
+      tier: mariadb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: spring-demo
+        tier: mariadb
+    spec:
+      containers:
+        - image: mariadb:lts
+          name: mariadb-lts
+          env:
+            - name: MARIADB_ALLOW_EMPTY_ROOT_PASSWORD
+              value: "1"
+          ports:
+            - containerPort: 3306
+              name: mariadb
+          volumeMounts:
+            - name: mariadb-persistent-storage
+              mountPath: /var/lib/mysql
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+      volumes:
+        - name: mariadb-persistent-storage
+          persistentVolumeClaim:
+            claimName: mariadb-pv-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-demo
+  labels:
+    app: spring-demo
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: spring-demo
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: spring-demo
+    spec:
+      containers:
+        - image: vkalenyuk/spring-demo
+          name: spring-demo
+          ports:
+            - containerPort: 8080
+              name: spring-demo
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
